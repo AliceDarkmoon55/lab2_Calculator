@@ -13,10 +13,11 @@ import java.util.logging.Logger;
 public class Main {
     static private final Logger logger = Logger.getLogger(Main.class.getName());
 
-    public static void main(String[] args) throws IOException, InvalidNumberOfArguments, CantOpenConfigFile, CantCreateCommand {
+    public static void main(String[] args) {
         String path = null;
         if (args.length > 1){
-            throw new InvalidNumberOfArguments("More than 1 element",  1, args.length);
+            logger.log(Level.SEVERE, "More than 1 element");
+            System.exit(1);
         }
         else if (args.length == 1){
             path = args[0];
@@ -27,9 +28,10 @@ public class Main {
         }
         catch (IOException ex){
             logger.log(Level.SEVERE, "Exception: ", ex);
-            throw new CantOpenConfigFile("Cant open logger config file", loggerConfigFileName);
         }
-        StackCalculator calc = new StackCalculator(path);
-        calc.makeCount();
+        try {
+            StackCalculator calc = new StackCalculator(path);
+            calc.makeCount();
+        }
     }
 }

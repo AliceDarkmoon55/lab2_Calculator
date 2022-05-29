@@ -23,4 +23,17 @@ class DivisionTest {
         }
         assertTrue(stack.isEmpty());
     }
+
+    @Test
+    public void testEmptyStack() {
+        StackWithDefinitions stack = new StackWithDefinitions();
+        Division cmd = new Division();
+        try {
+            cmd.execute(stack);
+            fail("Expected InvalidNumberOfArguments");
+        }
+        catch (InvalidNumberOfArguments ex) {
+            assertNotNull(ex.getMessage());
+        }
+    }
 }

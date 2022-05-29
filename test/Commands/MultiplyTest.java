@@ -23,4 +23,17 @@ class MultiplyTest {
         }
         assertTrue(stack.isEmpty());
     }
+
+    @Test
+    public void testEmptyStack() {
+        StackWithDefinitions stack = new StackWithDefinitions();
+        Multiply cmd = new Multiply();
+        try {
+            cmd.execute(stack);
+            fail("Expected InvalidNumberOfArguments");
+        }
+        catch (InvalidNumberOfArguments ex) {
+            assertNotNull(ex.getMessage());
+        }
+    }
 }

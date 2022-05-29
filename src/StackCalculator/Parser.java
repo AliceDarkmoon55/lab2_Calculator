@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 public class Parser {
     public Parser(String path){
-        commandsList = new ArrayList<Command>();
+        commandsList = new List<Command>();
         this.path = path;
     }
 
@@ -28,20 +28,20 @@ public class Parser {
         while (scanner.hasNextLine()){
             String line = scanner.nextLine();
             if (line.charAt(0) != '#') {
-                parse_command(line);
+                parseCommand(line);
             }
         }
     }
 
-    public ArrayList<Command> getCommandsList() {
+    public List<Command> getCommandsList() {
         return commandsList;
     }
 
-    private void parse_command(String line){
+    private void parseCommand(String line){
         String [] arr = line.split("[ \t]");
         commandsList.add(new Command(arr[0], Arrays.copyOfRange(arr, 1, arr.length)));
     }
 
     private final String path;
-    private final ArrayList<Command> commandsList;
+    private final List<Command> commandsList;
 }

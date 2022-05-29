@@ -23,4 +23,17 @@ class PopTest {
         }
         assertTrue(stack.isEmpty());
     }
+
+    @Test
+    public void testEmptyStack() {
+        StackWithDefinitions stack = new StackWithDefinitions();
+        Pop cmd = new Pop();
+        try {
+            cmd.execute(stack);
+            fail("Expected InvalidNumberOfArguments");
+        }
+        catch (InvalidNumberOfArguments ex) {
+            assertNotNull(ex.getMessage());
+        }
+    }
 }

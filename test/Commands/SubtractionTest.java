@@ -23,4 +23,17 @@ class SubtractionTest {
         }
         assertTrue(stack.isEmpty());
     }
+
+    @Test
+    public void testEmptyStack() {
+        StackWithDefinitions stack = new StackWithDefinitions();
+        Subtraction cmd = new Subtraction();
+        try {
+            cmd.execute(stack);
+            fail("Expected InvalidNumberOfArguments");
+        }
+        catch (InvalidNumberOfArguments ex) {
+            assertNotNull(ex.getMessage());
+        }
+    }
 }

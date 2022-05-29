@@ -18,6 +18,18 @@ class SqrtTest {
             cmd.execute(stack);
             assertEquals(Math.sqrt(i), stack.pop());
         }
-        assertTrue(stack.isEmpty());
+    }
+
+    @Test
+    public void testEmptyStack() {
+        StackWithDefinitions stack = new StackWithDefinitions();
+        Sqrt cmd = new Sqrt();
+        try {
+            cmd.execute(stack);
+            fail("Expected InvalidNumberOfArguments");
+        }
+        catch (InvalidNumberOfArguments ex) {
+            assertNotNull(ex.getMessage());
+        }
     }
 }

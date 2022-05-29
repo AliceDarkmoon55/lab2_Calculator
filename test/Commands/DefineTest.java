@@ -19,4 +19,17 @@ class DefineTest {
         def.execute(stack, "a", "15");
         assertEquals(stack.getDefine("a"), 1);
     }
+
+    @Test
+    public void testLessArguments() {
+        StackWithDefinitions stack = new StackWithDefinitions();
+        Define def = new Define();
+        try {
+            cmd.execute(stack);
+            fail("Expected InvalidNumberOfArguments");
+        }
+        catch (InvalidNumberOfArguments ex) {
+            assertNotNull(ex.getMessage());
+        }
+    }
 }

@@ -21,7 +21,7 @@ public class StackCalculator {
         this(null);
     }
 
-    public void makeCount() throws IOException, CantCreateCommand, CantOpenConfigFile {
+    public void makeCount() {
         Parser parser = new Parser(path);
         try {
             parser.parse();
@@ -33,7 +33,7 @@ public class StackCalculator {
         if (logger.isLoggable(Level.FINE)){
             logger.fine("Successful parsing");
         }
-        ArrayList<Command> commandsList = parser.getCommandsList();
+        List<Command> commandsList = parser.getCommandsList();
         CommandFactory factory = CommandFactory.instance();
         for (Command command: commandsList){
             ICommand cmd;
@@ -41,8 +41,7 @@ public class StackCalculator {
                 cmd = factory.getCommand(command.getName());
             }
             catch (UnknownCommand | CantCreateCommand ex){
-                logger.log(Level.SEVERE, "Exception:", ex);
-                return;
+                logger.warning("Entered invalid command name.");
             }
             if (logger.isLoggable(Level.FINE)){
                 logger.fine("Command" + command.getName() + "created");

@@ -21,6 +21,18 @@ class AddTest {
                 assertEquals(i+j, stack.pop());
             }
         }
-        assertTrue(stack.isEmpty());
+    }
+
+    @Test
+    public void testEmptyStack() {
+        StackWithDefinitions stack = new StackWithDefinitions();
+        Add cmd = new Add();
+        try {
+            cmd.execute(stack);
+            fail("Expected InvalidNumberOfArguments");
+        }
+        catch (InvalidNumberOfArguments ex) {
+            assertNotNull(ex.getMessage());
+        }
     }
 }

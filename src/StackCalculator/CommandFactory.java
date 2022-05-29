@@ -20,7 +20,7 @@ public class CommandFactory  {
     private static final Logger logger = Logger.getLogger(CommandFactory.class.getName());
 
     private CommandFactory() throws CantOpenConfigFile, CantCreateCommand {
-        commands_table = new HashMap<>();
+        commandsTable = new HashMap<>();
         Properties props = new Properties();
         final String configFileName = "/config/commands.ini";
         try {
@@ -33,7 +33,7 @@ public class CommandFactory  {
         for (Entry entry: props.entrySet()){
             String res = (String)entry.getValue();
             try {
-                commands_table.put((String) entry.getKey(), Class.forName(res));
+                commandsTable.put((String) entry.getKey(), Class.forName(res));
             }
             catch (ClassNotFoundException ex){
                 logger.log(Level.SEVERE, "Exception: ", ex);
@@ -56,12 +56,12 @@ public class CommandFactory  {
     }
 
     public ICommand getCommand(String cmdName) throws UnknownCommand, CantCreateCommand {
-        if (!commands_table.containsKey(cmdName)){
+        if (!commandsTable.containsKey(cmdName)){
             throw new UnknownCommand("Unknown command name", cmdName);
         }
         ICommand cmd;
         try{
-            cmd = (ICommand) commands_table.get(cmdName).getDeclaredConstructor().newInstance();
+            cmd = (ICommand) commandsTable.get(cmdName).getDeclaredConstructor().newInstance();
         }
         catch (IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException ex){
             logger.log(Level.SEVERE, "Exception: ", ex);
@@ -72,5 +72,5 @@ public class CommandFactory  {
 
 
     static volatile private CommandFactory factory = null;
-    private final HashMap<String, Class> commands_table;
+    private final HashMap<String, Class> commandsTable;
 }
