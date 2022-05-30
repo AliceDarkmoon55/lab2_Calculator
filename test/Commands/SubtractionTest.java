@@ -34,6 +34,8 @@ class SubtractionTest {
         }
         catch (InvalidNumberOfArguments ex) {
             assertNotNull(ex.getMessage());
+        } catch (NotEnoughArgumentsForBinaryOperation e) {
+            e.printStackTrace();
         }
     }
 }

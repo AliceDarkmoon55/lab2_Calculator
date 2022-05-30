@@ -33,5 +33,8 @@ public class Main {
             StackCalculator calc = new StackCalculator(path);
             calc.makeCount();
         }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -23,13 +23,15 @@ class DefineTest {
     @Test
     public void testLessArguments() {
         StackWithDefinitions stack = new StackWithDefinitions();
-        Define def = new Define();
+        Define cmd = new Define();
         try {
             cmd.execute(stack);
             fail("Expected InvalidNumberOfArguments");
         }
         catch (InvalidNumberOfArguments ex) {
             assertNotNull(ex.getMessage());
+        } catch (InvalidArgumentType e) {
+            e.printStackTrace();
         }
     }
 }

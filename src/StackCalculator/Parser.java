@@ -5,13 +5,14 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Arrays;
 
 
 public class Parser {
     public Parser(String path){
-        commandsList = new List<Command>();
+        commandsList = new ArrayList<>();
         this.path = path;
     }
 

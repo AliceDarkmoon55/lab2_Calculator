@@ -30,6 +30,8 @@ class PushTest {
         }
         catch (InvalidNumberOfArguments ex) {
             assertNotNull(ex.getMessage());
+        } catch (InvalidArgumentType e) {
+            e.printStackTrace();
         }
     }
 }

@@ -34,6 +34,8 @@ class PopTest {
         }
         catch (InvalidNumberOfArguments ex) {
             assertNotNull(ex.getMessage());
+        } catch (EmptyStackException e) {
+            e.printStackTrace();
         }
     }
 }

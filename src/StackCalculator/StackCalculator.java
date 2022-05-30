@@ -6,6 +6,7 @@ import Exceptions.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,13 +29,19 @@ public class StackCalculator {
         }
         catch (FileNotFoundException ex){
             logger.log(Level.SEVERE, "Exception", ex);
-            throw ex;
         }
         if (logger.isLoggable(Level.FINE)){
             logger.fine("Successful parsing");
         }
         List<Command> commandsList = parser.getCommandsList();
-        CommandFactory factory = CommandFactory.instance();
+        CommandFactory factory = null;
+        try {
+            factory = CommandFactory.instance();
+        } catch (CantOpenConfigFile e) {
+            e.printStackTrace();
+        } catch (CantCreateCommand e) {
+            e.printStackTrace();
+        }
         for (Command command: commandsList){
             ICommand cmd;
             try{
@@ -42,6 +49,7 @@ public class StackCalculator {
             }
             catch (UnknownCommand | CantCreateCommand ex){
                 logger.warning("Entered invalid command name.");
+                return;
             }
             if (logger.isLoggable(Level.FINE)){
                 logger.fine("Command" + command.getName() + "created");
