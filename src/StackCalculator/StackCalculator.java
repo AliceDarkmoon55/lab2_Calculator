@@ -49,7 +49,7 @@ public class StackCalculator {
             }
             catch (UnknownCommand | CantCreateCommand ex){
                 logger.warning("Entered invalid command name.");
-                return;
+                continue;
             }
             if (logger.isLoggable(Level.FINE)){
                 logger.fine("Command" + command.getName() + "created");
