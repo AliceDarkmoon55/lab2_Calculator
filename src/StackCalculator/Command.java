@@ -1,6 +1,9 @@
 package StackCalculator;
 
 public class Command {
+    private final String name;
+    private final String[] args;
+
     public Command(String name, String[] args){
         this.name = name;
         this.args = args;
@@ -13,7 +16,4 @@ public class Command {
     public String[] getArgs() {
         return args;
     }
-
-    private final String name;
-    private final String[] args;
 }

@@ -11,6 +11,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class StackCalculator {
+    private final String path;
+    private final StackWithDefinitions stack;
     private static final Logger logger = Logger.getLogger(StackCalculator.class.getName());
 
     public StackCalculator(String path){
@@ -63,7 +65,4 @@ public class StackCalculator {
             }
         }
     }
-
-    private final String path;
-    private final StackWithDefinitions stack;
 }

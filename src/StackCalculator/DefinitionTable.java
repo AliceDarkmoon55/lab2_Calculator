@@ -6,6 +6,7 @@ import Exceptions.UnknownDefinition;
 import java.util.HashMap;
 
 public class DefinitionTable {
+    private final HashMap<String, Double> table;
     public DefinitionTable(){
         table = new HashMap<>();
     }
@@ -24,6 +25,4 @@ public class DefinitionTable {
         }
         return value;
     }
-
-    private final HashMap<String, Double> table;
 }

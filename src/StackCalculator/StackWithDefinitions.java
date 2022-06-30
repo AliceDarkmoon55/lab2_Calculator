@@ -8,6 +8,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class StackWithDefinitions {
+    private final DefinitionTable definitionTable;
+    private final Stack<Double> stack;
     private static final Logger logger = Logger.getLogger(StackWithDefinitions.class.getName());
 
     public StackWithDefinitions(){
@@ -59,7 +61,4 @@ public class StackWithDefinitions {
             logger.log(Level.SEVERE, "Exception: ", ex);
         }
     }
-
-    private final DefinitionTable definitionTable;
-    private final Stack<Double> stack;
 }

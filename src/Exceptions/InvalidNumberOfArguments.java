@@ -1,6 +1,9 @@
 package Exceptions;
 
 public class InvalidNumberOfArguments extends CommandException {
+    private final int expectedArgumentsNumber;
+    private final int receivedArgumentsNumber;
+
     public InvalidNumberOfArguments(String message, int expectedArgumentsNumber, int receivedArgumentsNumber){
         super(message);
         this.expectedArgumentsNumber = expectedArgumentsNumber;
@@ -14,7 +17,4 @@ public class InvalidNumberOfArguments extends CommandException {
     public int getReceived() {
         return receivedArgumentsNumber;
     }
-
-    private final int expectedArgumentsNumber;
-    private final int receivedArgumentsNumber;
 }

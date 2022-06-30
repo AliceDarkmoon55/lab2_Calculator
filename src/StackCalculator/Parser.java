@@ -11,6 +11,9 @@ import java.util.Arrays;
 
 
 public class Parser {
+    private final String path;
+    private final List<Command> commandsList;
+
     public Parser(String path){
         commandsList = new ArrayList<>();
         this.path = path;
@@ -42,7 +45,4 @@ public class Parser {
         String [] arr = line.split("[ \t]");
         commandsList.add(new Command(arr[0], Arrays.copyOfRange(arr, 1, arr.length)));
     }
-
-    private final String path;
-    private final List<Command> commandsList;
 }

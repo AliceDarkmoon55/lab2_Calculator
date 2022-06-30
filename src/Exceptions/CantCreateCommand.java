@@ -1,6 +1,8 @@
 package Exceptions;
 
 public class CantCreateCommand extends Exception {
+    final private String cmdName;
+
     public CantCreateCommand(String message, String cmdName){
         super(message);
         this.cmdName = cmdName;
@@ -9,6 +11,4 @@ public class CantCreateCommand extends Exception {
     public String getCmdName() {
         return cmdName;
     }
-
-    final private String cmdName;
 }

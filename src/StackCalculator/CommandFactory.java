@@ -17,6 +17,8 @@ import java.util.logging.Logger;
 
 
 public class CommandFactory  {
+    static volatile private CommandFactory factory = null;
+    private final HashMap<String, Class> commandsTable;
     private static final Logger logger = Logger.getLogger(CommandFactory.class.getName());
 
     private CommandFactory() throws CantOpenConfigFile, CantCreateCommand {
@@ -69,8 +71,4 @@ public class CommandFactory  {
         }
         return cmd;
     }
-
-
-    static volatile private CommandFactory factory = null;
-    private final HashMap<String, Class> commandsTable;
 }

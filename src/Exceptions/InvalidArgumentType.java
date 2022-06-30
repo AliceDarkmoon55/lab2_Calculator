@@ -1,6 +1,8 @@
 package Exceptions;
 
 public class InvalidArgumentType extends CommandException {
+    private final String argument;
+
     public InvalidArgumentType(String message, String arg){
         super(message);
         this.argument = arg;
@@ -9,6 +11,4 @@ public class InvalidArgumentType extends CommandException {
     public String getArgument() {
         return argument;
     }
-
-    private final String argument;
 }
