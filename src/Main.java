@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 public class Main {
     static private final Logger logger = Logger.getLogger(Main.class.getName());
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         String path = null;
         if (args.length > 1){
             logger.log(Level.SEVERE, "More than 1 element");
@@ -23,12 +23,12 @@ public class Main {
             path = args[0];
         }
         final String loggerConfigFileName = "/config/logger.properties";
-        try{
+        //try{
             LogManager.getLogManager().readConfiguration(Main.class.getResourceAsStream(loggerConfigFileName));
-        }
-        catch (IOException ex){
+        //}
+        /*catch (IOException ex){
             logger.log(Level.SEVERE, "Exception: ", ex);
-        }
+        }*/
         try {
             StackCalculator calc = new StackCalculator(path);
             calc.makeCount();

@@ -22,6 +22,7 @@ public class Define implements ICommand {
         catch (NumberFormatException ex){
             throw new InvalidArgumentType("Second argument must be a number", args[1]);
         }
+        System.out.println("#");
         stackCalc.define(args[0], val);
         if (logger.isLoggable(Level.FINE)){
             logger.fine("Define executed");

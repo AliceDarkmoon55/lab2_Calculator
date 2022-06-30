@@ -52,7 +52,7 @@ public class StackCalculator {
                 continue;
             }
             if (logger.isLoggable(Level.FINE)){
-                logger.fine("Command" + command.getName() + "created");
+                logger.fine("Command " + command.getName() + " created");
             }
             try {
                 cmd.execute(stack, command.getArgs());
